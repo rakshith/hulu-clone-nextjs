@@ -1,7 +1,9 @@
 import React from "react";
 import requests from "../utils/requests";
-console.log("requests", requests);
+import { useRouter } from "next/router";
+
 function NavBar() {
+  const router = useRouter();
   return (
     <nav className="relative">
       <div
@@ -11,6 +13,7 @@ function NavBar() {
         {Object.entries(requests).map(([key, { title, url }]) => (
           <h1
             key={key}
+            onClick={() => router.push(`/?genre=${key}`)}
             className="last:pr-24 cursor-pointer transition duration-100 transform hover:scale-125 
             hover:text-white active:text-red-500 select-none"
           >
